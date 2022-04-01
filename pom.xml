@@ -11,6 +11,18 @@
     <description>Cerus' and lus' entry for the DevCord plugin jam</description>
     <url>https://github.com/cerus/devcord-plugin-jam</url>
 
+    <developers>
+        <developer>
+            <id>cerus</id>
+            <name>Maximilian Dorn</name>
+            <url>https://github.com/cerus</url>
+        </developer>
+        <developer>
+            <id>lus</id>
+            <url>https://github.com/lus</url>
+        </developer>
+    </developers>
+
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
