@@ -5,6 +5,9 @@ import java.util.concurrent.ThreadLocalRandom;
 import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Particle;
+import org.bukkit.Sound;
+import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.event.EventHandler;
@@ -13,7 +16,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 
 public class OreBreakListener implements Listener {
 
-    private static final int TELEPORT_CHANCE = 50;
+    private static final int TELEPORT_CHANCE = 30;
     private static final int TELEPORT_TRIES = 50;
     private static final double TELEPORT_RADIUS = 7.5;
 
@@ -42,7 +45,25 @@ public class OreBreakListener implements Listener {
         event.setCancelled(true);
         block.setType(Material.AIR);
         safeLocation.getBlock().setType(oreType);
-        block.getWorld().playEffect(block.getLocation(), Effect.ENDER_SIGNAL, null);
+
+        final World world = block.getWorld();
+        world.playEffect(block.getLocation(), Effect.ENDER_SIGNAL, null);
+        world.spawnParticle(
+                Particle.DRAGON_BREATH,
+                block.getLocation()
+                        .clone().add(0.5, 0.5, 0.5),
+                15,
+                0.3f,
+                0.3f,
+                0.3f,
+                0
+        );
+        world.playSound(
+                block.getLocation(),
+                Sound.ENTITY_ENDERMAN_TELEPORT,
+                1f,
+                1f
+        );
     }
 
     private Location attemptGetLocation(final Random random, final Location startingLocation) {
