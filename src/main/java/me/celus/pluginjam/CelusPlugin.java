@@ -1,4 +1,11 @@
 package me.celus.pluginjam;
 
-public class CelusPlugin {
+import org.bukkit.plugin.java.JavaPlugin;
+
+public class CelusPlugin extends JavaPlugin {
+
+    @Override
+    public void onEnable() {
+    }
+
 }
