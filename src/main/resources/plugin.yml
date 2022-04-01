@@ -1,0 +1,6 @@
+name: ${project.artifactId}
+version: ${project.version}
+description: ${project.description}
+authors: [ Cerus, lus ]
+main: me.celus.pluginjam.CelusPlugin
+api-version: 1.18
