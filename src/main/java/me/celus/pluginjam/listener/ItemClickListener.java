@@ -22,7 +22,7 @@ public class ItemClickListener implements Listener {
     private static final int TELEPORT_CHANCE = 25;
 
     @EventHandler
-    public void onItemClick(final InventoryClickEvent event) {
+    public void handleItemClick(final InventoryClickEvent event) {
         if (!(event.getClickedInventory() instanceof PlayerInventory inv)
                 || (event.getAction() != InventoryAction.PICKUP_ALL
                 && event.getAction() != InventoryAction.SWAP_WITH_CURSOR)
