@@ -4,6 +4,7 @@ import me.celus.pluginjam.controller.BatPassengerController;
 import me.celus.pluginjam.controller.EntityParticleController;
 import me.celus.pluginjam.listener.AnimalHitListener;
 import me.celus.pluginjam.listener.FishDeathListener;
+import me.celus.pluginjam.listener.ItemClickListener;
 import me.celus.pluginjam.listener.OreBreakListener;
 import me.celus.pluginjam.listener.TreeBreakListener;
 import me.celus.pluginjam.task.EntityAiTask;
@@ -27,6 +28,7 @@ public class CelusPlugin extends JavaPlugin {
         pluginManager.registerEvents(new TreeBreakListener(), this);
         pluginManager.registerEvents(new FishDeathListener(batPassengerController), this);
         pluginManager.registerEvents(new OreBreakListener(), this);
+        pluginManager.registerEvents(new ItemClickListener(), this);
 
         // Schedule tasks
         final BukkitScheduler scheduler = this.getServer().getScheduler();
