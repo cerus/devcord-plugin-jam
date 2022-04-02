@@ -6,6 +6,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 
+/**
+ * Removes the bat of a flying fish when they die
+ */
 public class FishDeathListener implements Listener {
 
     private final BatPassengerController batPassengerController;

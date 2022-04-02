@@ -7,10 +7,16 @@ import org.bukkit.entity.Bat;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Fish;
 
+/**
+ * Controls flying fish bat removal
+ */
 public class BatPassengerController {
 
     private final Set<UUID> bats = new HashSet<>();
 
+    /**
+     * Removes the vehicle (bat) of a fish when it dies
+     */
     public void fishDied(final Fish fish) {
         if (!fish.isInsideVehicle()) {
             return;
@@ -26,6 +32,11 @@ public class BatPassengerController {
         }
     }
 
+    /**
+     * Register a bat
+     *
+     * @param bat The bat to register
+     */
     public void add(final Bat bat) {
         this.bats.add(bat.getUniqueId());
     }

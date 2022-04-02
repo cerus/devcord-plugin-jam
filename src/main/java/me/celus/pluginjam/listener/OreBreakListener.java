@@ -14,6 +14,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 
+/**
+ * Randomly teleports ores when they are broken
+ */
 public class OreBreakListener implements Listener {
 
     private static final int TELEPORT_CHANCE = 30;
@@ -32,20 +35,25 @@ public class OreBreakListener implements Listener {
             return;
         }
 
+        // Attempt to get a safe teleport location
         Location safeLocation;
         int count = 0;
-        while ((safeLocation = this.attemptGetLocation(rand, block.getLocation())) == null && count < TELEPORT_TRIES) {
+        while ((safeLocation = this.attemptGetLocation(rand, block.getLocation())) == null
+                && count < TELEPORT_TRIES) {
             count++;
         }
         if (safeLocation == null) {
+            // No safe location was found, abort
             return;
         }
 
+        // "Teleport" the block
         final Material oreType = block.getType();
         event.setCancelled(true);
         block.setType(Material.AIR);
         safeLocation.getBlock().setType(oreType);
 
+        // Spawn particles and effects
         final World world = block.getWorld();
         world.playEffect(block.getLocation(), Effect.ENDER_SIGNAL, null);
         world.spawnParticle(
@@ -66,6 +74,14 @@ public class OreBreakListener implements Listener {
         );
     }
 
+    /**
+     * Attempts to find a safe location for block teleports
+     *
+     * @param random           The random to use
+     * @param startingLocation The starting location
+     *
+     * @return A safe location or null
+     */
     private Location attemptGetLocation(final Random random, final Location startingLocation) {
         final Location clonedLoc = startingLocation.clone();
         clonedLoc.setX(clonedLoc.getX() + random.nextDouble() * (TELEPORT_RADIUS * 2) - TELEPORT_RADIUS);
