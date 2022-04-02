@@ -3,6 +3,7 @@ package me.celus.pluginjam;
 import me.celus.pluginjam.controller.BatPassengerController;
 import me.celus.pluginjam.controller.EntityParticleController;
 import me.celus.pluginjam.listener.AnimalHitListener;
+import me.celus.pluginjam.listener.CompanionBreedListener;
 import me.celus.pluginjam.listener.CreeperIgniteListener;
 import me.celus.pluginjam.listener.FishDeathListener;
 import me.celus.pluginjam.listener.ItemClickListener;
@@ -36,6 +37,7 @@ public class CelusPlugin extends JavaPlugin {
         pluginManager.registerEvents(new ToolUseListener(), this);
         pluginManager.registerEvents(new CreeperIgniteListener(), this);
         pluginManager.registerEvents(new ParrotFeedListener(), this);
+        pluginManager.registerEvents(new CompanionBreedListener(), this);
 
         // Schedule tasks
         final BukkitScheduler scheduler = this.getServer().getScheduler();
