@@ -36,7 +36,7 @@ public class TreeBreakListener implements Listener {
             block.getWorld().playEffect(
                     block.getLocation(),
                     Effect.STEP_SOUND,
-                    Material.NETHER_WART_BLOCK
+                    Material.RED_GLAZED_TERRACOTTA
             );
         }
     }
