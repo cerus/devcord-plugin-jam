@@ -7,6 +7,9 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * Called when a creeper gets ignited
+ * <p>
+ * This event will also get called when a creeper gets
+ * ignited because a player got too close to a creeper.
  */
 public class CreeperFuseEvent extends Event {
 
