@@ -1,16 +1,9 @@
 package me.celus.pluginjam;
 
+import me.celus.pluginjam.challenge.ChallengeSupervisor;
 import me.celus.pluginjam.controller.BatPassengerController;
 import me.celus.pluginjam.controller.EntityParticleController;
-import me.celus.pluginjam.listener.AnimalHitListener;
-import me.celus.pluginjam.listener.CompanionBreedListener;
-import me.celus.pluginjam.listener.CreeperIgniteListener;
-import me.celus.pluginjam.listener.FishDeathListener;
-import me.celus.pluginjam.listener.ItemClickListener;
-import me.celus.pluginjam.listener.OreBreakListener;
-import me.celus.pluginjam.listener.ParrotFeedListener;
-import me.celus.pluginjam.listener.ToolUseListener;
-import me.celus.pluginjam.listener.TreeBreakListener;
+import me.celus.pluginjam.listener.*;
 import me.celus.pluginjam.task.CreeperTask;
 import me.celus.pluginjam.task.EntityAiTask;
 import me.celus.pluginjam.task.EntityPlayParticleTask;
@@ -38,6 +31,7 @@ public class CelusPlugin extends JavaPlugin {
         pluginManager.registerEvents(new CreeperIgniteListener(), this);
         pluginManager.registerEvents(new ParrotFeedListener(), this);
         pluginManager.registerEvents(new CompanionBreedListener(), this);
+        pluginManager.registerEvents(new ChallengeSupervisor(), this);
 
         // Schedule tasks
         final BukkitScheduler scheduler = this.getServer().getScheduler();

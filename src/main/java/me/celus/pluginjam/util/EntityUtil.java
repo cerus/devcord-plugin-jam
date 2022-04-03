@@ -1,8 +1,9 @@
 package me.celus.pluginjam.util;
 
+import org.bukkit.entity.FallingBlock;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import org.bukkit.entity.FallingBlock;
 
 /**
  * Collection of utility methods for entities
