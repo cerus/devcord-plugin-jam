@@ -1,18 +1,26 @@
 package me.celus.pluginjam.challenge;
 
-import me.celus.pluginjam.challenge.task.CollectFleshTask;
-import me.celus.pluginjam.challenge.task.Task;
-import org.bukkit.entity.Player;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Supplier;
+import me.celus.pluginjam.challenge.task.CollectFleshTask;
+import me.celus.pluginjam.challenge.task.FeedParrotTask;
+import me.celus.pluginjam.challenge.task.MineOreTask;
+import me.celus.pluginjam.challenge.task.Task;
+import me.celus.pluginjam.challenge.task.TreeBreakTask;
+import org.bukkit.entity.Player;
 
+/**
+ * Sorry, didn't have time for comments
+ */
 public class Challenge {
 
     private static final List<Supplier<Task>> AVAILABLE_TASKS = List.of(
-            () -> new CollectFleshTask(10) // TODO: Nobody likes hardcoding
+            () -> new CollectFleshTask(10),
+            () -> new FeedParrotTask(),
+            () -> new MineOreTask(10),
+            () -> new TreeBreakTask(10)
     );
 
     private final List<Task> tasks;

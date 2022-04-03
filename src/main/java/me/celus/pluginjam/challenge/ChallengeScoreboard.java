@@ -9,7 +9,12 @@ import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
 
+/**
+ * Sorry, didn't have time for comments
+ */
 public class ChallengeScoreboard {
+
+    private static final String OBJECTIVE_NAME = "celus-challenge-scoreboard";
 
     private final Player player;
     private final Scoreboard scoreboard;
@@ -28,7 +33,11 @@ public class ChallengeScoreboard {
     }
 
     public void update() {
-        final Objective objective = this.scoreboard.registerNewObjective("celus-challenge-scoreboard", "dummy", Component.text("Challenge"));
+        Objective objective = this.scoreboard.getObjective(OBJECTIVE_NAME);
+        if (objective != null) {
+            objective.unregister();
+        }
+        objective = this.scoreboard.registerNewObjective(OBJECTIVE_NAME, "dummy", Component.text("Challenge"));
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
 
         int i = 0;

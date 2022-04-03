@@ -3,7 +3,15 @@ package me.celus.pluginjam;
 import me.celus.pluginjam.challenge.ChallengeSupervisor;
 import me.celus.pluginjam.controller.BatPassengerController;
 import me.celus.pluginjam.controller.EntityParticleController;
-import me.celus.pluginjam.listener.*;
+import me.celus.pluginjam.listener.AnimalHitListener;
+import me.celus.pluginjam.listener.CompanionBreedListener;
+import me.celus.pluginjam.listener.CreeperIgniteListener;
+import me.celus.pluginjam.listener.FishDeathListener;
+import me.celus.pluginjam.listener.ItemClickListener;
+import me.celus.pluginjam.listener.OreBreakListener;
+import me.celus.pluginjam.listener.ParrotFeedListener;
+import me.celus.pluginjam.listener.ToolUseListener;
+import me.celus.pluginjam.listener.TreeBreakListener;
 import me.celus.pluginjam.task.CreeperTask;
 import me.celus.pluginjam.task.EntityAiTask;
 import me.celus.pluginjam.task.EntityPlayParticleTask;
@@ -19,6 +27,7 @@ public class CelusPlugin extends JavaPlugin {
         // Create controllers
         final EntityParticleController entityParticleController = new EntityParticleController();
         final BatPassengerController batPassengerController = new BatPassengerController();
+        final ChallengeSupervisor challengeSupervisor = new ChallengeSupervisor();
 
         // Register event listeners
         final PluginManager pluginManager = this.getServer().getPluginManager();
@@ -31,10 +40,11 @@ public class CelusPlugin extends JavaPlugin {
         pluginManager.registerEvents(new CreeperIgniteListener(), this);
         pluginManager.registerEvents(new ParrotFeedListener(), this);
         pluginManager.registerEvents(new CompanionBreedListener(), this);
-        pluginManager.registerEvents(new ChallengeSupervisor(), this);
+        pluginManager.registerEvents(challengeSupervisor, this);
 
         // Schedule tasks
         final BukkitScheduler scheduler = this.getServer().getScheduler();
+        scheduler.runTaskTimerAsynchronously(this, challengeSupervisor::updateScoreboards, 0, 10);
         scheduler.runTaskTimer(this, new EntityPlayParticleTask(entityParticleController), 0, 1);
         scheduler.runTaskTimer(this, new EntityAiTask(), 0, 1);
         scheduler.runTaskTimer(this, new FishLevitateTask(batPassengerController, entityParticleController), 0, 5);

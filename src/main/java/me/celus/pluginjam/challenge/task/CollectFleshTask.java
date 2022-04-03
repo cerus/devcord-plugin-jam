@@ -1,12 +1,14 @@
 package me.celus.pluginjam.challenge.task;
 
+import java.util.Set;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityPickupItemEvent;
 
-import java.util.Set;
-
+/**
+ * Sorry, didn't have time for comments
+ */
 public class CollectFleshTask extends Task {
 
     private static final Set<Material> FLESH_MATERIALS = Set.of(
@@ -38,7 +40,7 @@ public class CollectFleshTask extends Task {
 
     @Override
     public String getTitle() {
-        return String.format("Collect flesh/fish (%d/%d)", this.collectedAmount, this.requiredAmount);
+        return String.format("Sammle Fleisch / Fisch (%d/%d)", this.collectedAmount, this.requiredAmount);
     }
 
     @Override
@@ -59,8 +61,8 @@ public class CollectFleshTask extends Task {
             return;
         }
 
-        this.collectedAmount++;
-        if (this.collectedAmount == this.requiredAmount) {
+        this.collectedAmount += event.getItem().getItemStack().getAmount();
+        if (this.collectedAmount >= this.requiredAmount) {
             this.complete();
         }
     }

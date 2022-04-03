@@ -1,14 +1,16 @@
 package me.celus.pluginjam.challenge;
 
+import java.util.HashMap;
+import java.util.Map;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import java.util.HashMap;
-import java.util.Map;
-
+/**
+ * Sorry, didn't have time for comments
+ */
 public class ChallengeSupervisor implements Listener {
 
     private final Map<Player, Challenge> ongoingChallenges;
@@ -26,7 +28,7 @@ public class ChallengeSupervisor implements Listener {
     @EventHandler
     public void handlePlayerJoin(final PlayerJoinEvent event) {
         // TODO: Nobody likes hardcoding
-        final Challenge challenge = Challenge.random(1);
+        final Challenge challenge = Challenge.random(10);
         challenge.assignPlayer(event.getPlayer());
         this.ongoingChallenges.put(event.getPlayer(), challenge);
 

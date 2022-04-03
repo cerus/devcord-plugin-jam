@@ -9,6 +9,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 
+/**
+ * Sorry, didn't have time for comments
+ */
 public abstract class Task implements Listener {
 
     private Player assignedPlayer = null;
